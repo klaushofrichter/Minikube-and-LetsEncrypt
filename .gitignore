@@ -1,0 +1,5 @@
+caroot.*
+kubectl.config
+*-cert.yaml
+tracking.txt
+test.sh

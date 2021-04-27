@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-deploy
+  namespace: ${NAMESPACE}
+  labels:
+    app: hello
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hello
+  template:
+    metadata:
+      labels:
+        app: hello
+    spec:
+      containers:
+        - name: hello-container
+          image: hashicorp/http-echo
+          args:
+            - "-text=Hello"
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: hello-service
+  namespace: ${NAMESPACE}
+spec:
+  selector:
+    app: hello
+  ports:
+    - port: 5678 

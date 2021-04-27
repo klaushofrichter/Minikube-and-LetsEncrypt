@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: welcome-deploy
+  namespace: ${NAMESPACE}
+  labels:
+    app: welcome
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: welcome
+  template:
+    metadata:
+      labels:
+        app: welcome
+    spec:
+      containers:
+        - name: welcome-container
+          image: hashicorp/http-echo
+          args:
+            - "-text=Welcome"
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: welcome-service
+  namespace: ${NAMESPACE}
+spec:
+  selector:
+    app: welcome
+  ports:
+    - port: 5678 
