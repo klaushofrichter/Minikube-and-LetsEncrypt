@@ -20,3 +20,7 @@ have a certificate generated that can be reused :-) Checkout details at [medium.
 * A Linux PC with Ubuntu 20.04.  
 * Minikube version 1.19+ or better.
 * virtualbox.
+
+## Updates
+* May 7, 2021: There is a followup repository available [here](https://github.com/klaushofrichter/Minikube-and-OAuth2) that shows 
+  how to add OAuth2 authentication to this Kubernetes application.
